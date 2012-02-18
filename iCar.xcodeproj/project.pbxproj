@@ -1,0 +1,293 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C51A588A14F0295E00E8F6B6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51A588914F0295E00E8F6B6 /* UIKit.framework */; };
+		C51A588C14F0295E00E8F6B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51A588B14F0295E00E8F6B6 /* Foundation.framework */; };
+		C51A588E14F0295E00E8F6B6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C51A588D14F0295E00E8F6B6 /* CoreGraphics.framework */; };
+		C51A589414F0295E00E8F6B6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C51A589214F0295E00E8F6B6 /* InfoPlist.strings */; };
+		C51A589614F0295E00E8F6B6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A589514F0295E00E8F6B6 /* main.m */; };
+		C51A589A14F0295E00E8F6B6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A589914F0295E00E8F6B6 /* AppDelegate.m */; };
+		C51A589D14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51A589B14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard */; };
+		C51A58A014F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51A589E14F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard */; };
+		C51A58A314F0295E00E8F6B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A58A214F0295E00E8F6B6 /* ViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C51A588514F0295E00E8F6B6 /* iCar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCar.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C51A588914F0295E00E8F6B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C51A588B14F0295E00E8F6B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C51A588D14F0295E00E8F6B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C51A589114F0295E00E8F6B6 /* iCar-Info.plist */ = {isa = PBXFileReference; path = "iCar-Info.plist"; sourceTree = "<group>"; };
+		C51A589314F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C51A589514F0295E00E8F6B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C51A589714F0295E00E8F6B6 /* iCar-Prefix.pch */ = {isa = PBXFileReference; path = "iCar-Prefix.pch"; sourceTree = "<group>"; };
+		C51A589814F0295E00E8F6B6 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		C51A589914F0295E00E8F6B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C51A589C14F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
+		C51A589F14F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
+		C51A58A114F0295E00E8F6B6 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		C51A58A214F0295E00E8F6B6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C51A588214F0295E00E8F6B6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51A588A14F0295E00E8F6B6 /* UIKit.framework in Frameworks */,
+				C51A588C14F0295E00E8F6B6 /* Foundation.framework in Frameworks */,
+				C51A588E14F0295E00E8F6B6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C51A587A14F0295E00E8F6B6 = {
+			isa = PBXGroup;
+			children = (
+				C51A588F14F0295E00E8F6B6 /* iCar */,
+				C51A588814F0295E00E8F6B6 /* Frameworks */,
+				C51A588614F0295E00E8F6B6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C51A588614F0295E00E8F6B6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C51A588514F0295E00E8F6B6 /* iCar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C51A588814F0295E00E8F6B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C51A588914F0295E00E8F6B6 /* UIKit.framework */,
+				C51A588B14F0295E00E8F6B6 /* Foundation.framework */,
+				C51A588D14F0295E00E8F6B6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C51A588F14F0295E00E8F6B6 /* iCar */ = {
+			isa = PBXGroup;
+			children = (
+				C51A589814F0295E00E8F6B6 /* AppDelegate.h */,
+				C51A589914F0295E00E8F6B6 /* AppDelegate.m */,
+				C51A589B14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard */,
+				C51A589E14F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard */,
+				C51A58A114F0295E00E8F6B6 /* ViewController.h */,
+				C51A58A214F0295E00E8F6B6 /* ViewController.m */,
+				C51A589014F0295E00E8F6B6 /* Supporting Files */,
+			);
+			path = iCar;
+			sourceTree = "<group>";
+		};
+		C51A589014F0295E00E8F6B6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C51A589114F0295E00E8F6B6 /* iCar-Info.plist */,
+				C51A589214F0295E00E8F6B6 /* InfoPlist.strings */,
+				C51A589514F0295E00E8F6B6 /* main.m */,
+				C51A589714F0295E00E8F6B6 /* iCar-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C51A588414F0295E00E8F6B6 /* iCar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C51A58A614F0295F00E8F6B6 /* Build configuration list for PBXNativeTarget "iCar" */;
+			buildPhases = (
+				C51A588114F0295E00E8F6B6 /* Sources */,
+				C51A588214F0295E00E8F6B6 /* Frameworks */,
+				C51A588314F0295E00E8F6B6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = iCar;
+			productName = iCar;
+			productReference = C51A588514F0295E00E8F6B6 /* iCar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C51A587C14F0295E00E8F6B6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C51A587F14F0295E00E8F6B6 /* Build configuration list for PBXProject "iCar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C51A587A14F0295E00E8F6B6;
+			productRefGroup = C51A588614F0295E00E8F6B6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C51A588414F0295E00E8F6B6 /* iCar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C51A588314F0295E00E8F6B6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51A589414F0295E00E8F6B6 /* InfoPlist.strings in Resources */,
+				C51A589D14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard in Resources */,
+				C51A58A014F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C51A588114F0295E00E8F6B6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C51A589614F0295E00E8F6B6 /* main.m in Sources */,
+				C51A589A14F0295E00E8F6B6 /* AppDelegate.m in Sources */,
+				C51A58A314F0295E00E8F6B6 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C51A589214F0295E00E8F6B6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51A589314F0295E00E8F6B6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C51A589B14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51A589C14F0295E00E8F6B6 /* en */,
+			);
+			name = MainStoryboard_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		C51A589E14F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C51A589F14F0295E00E8F6B6 /* en */,
+			);
+			name = MainStoryboard_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C51A58A414F0295E00E8F6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C51A58A514F0295E00E8F6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C51A58A714F0295F00E8F6B6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iCar/iCar-Prefix.pch";
+				INFOPLIST_FILE = "iCar/iCar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C51A58A814F0295F00E8F6B6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "iCar/iCar-Prefix.pch";
+				INFOPLIST_FILE = "iCar/iCar-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C51A587F14F0295E00E8F6B6 /* Build configuration list for PBXProject "iCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51A58A414F0295E00E8F6B6 /* Debug */,
+				C51A58A514F0295E00E8F6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C51A58A614F0295F00E8F6B6 /* Build configuration list for PBXNativeTarget "iCar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C51A58A714F0295F00E8F6B6 /* Debug */,
+				C51A58A814F0295F00E8F6B6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C51A587C14F0295E00E8F6B6 /* Project object */;
+}
