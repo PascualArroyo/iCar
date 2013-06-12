@@ -16,6 +16,11 @@
 		C51A589D14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51A589B14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard */; };
 		C51A58A014F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C51A589E14F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard */; };
 		C51A58A314F0295E00E8F6B6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C51A58A214F0295E00E8F6B6 /* ViewController.m */; };
+		C564852016E4F0C1003AE60B /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C564851F16E4F0C1003AE60B /* Default-568h@2x.png */; };
+		C59980EF174FD4D100B6A1A3 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = C59980EE174FD4D100B6A1A3 /* icon.png */; };
+		C59980F1174FD4DE00B6A1A3 /* icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = C59980F0174FD4DE00B6A1A3 /* icon-114.png */; };
+		C59980F3174FD4E500B6A1A3 /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = C59980F2174FD4E500B6A1A3 /* icon-72.png */; };
+		C59980F5174FD4EB00B6A1A3 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = C59980F4174FD4EB00B6A1A3 /* icon-144.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,16 +28,21 @@
 		C51A588914F0295E00E8F6B6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C51A588B14F0295E00E8F6B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		C51A588D14F0295E00E8F6B6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C51A589114F0295E00E8F6B6 /* iCar-Info.plist */ = {isa = PBXFileReference; path = "iCar-Info.plist"; sourceTree = "<group>"; };
+		C51A589114F0295E00E8F6B6 /* iCar-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "iCar-Info.plist"; sourceTree = "<group>"; };
 		C51A589314F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C51A589514F0295E00E8F6B6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C51A589714F0295E00E8F6B6 /* iCar-Prefix.pch */ = {isa = PBXFileReference; path = "iCar-Prefix.pch"; sourceTree = "<group>"; };
-		C51A589814F0295E00E8F6B6 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		C51A589714F0295E00E8F6B6 /* iCar-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iCar-Prefix.pch"; sourceTree = "<group>"; };
+		C51A589814F0295E00E8F6B6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C51A589914F0295E00E8F6B6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C51A589C14F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		C51A589F14F0295E00E8F6B6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		C51A58A114F0295E00E8F6B6 /* ViewController.h */ = {isa = PBXFileReference; path = ViewController.h; sourceTree = "<group>"; };
+		C51A58A114F0295E00E8F6B6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C51A58A214F0295E00E8F6B6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C564851F16E4F0C1003AE60B /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		C59980EE174FD4D100B6A1A3 /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		C59980F0174FD4DE00B6A1A3 /* icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-114.png"; sourceTree = "<group>"; };
+		C59980F2174FD4E500B6A1A3 /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		C59980F4174FD4EB00B6A1A3 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-144.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +62,11 @@
 		C51A587A14F0295E00E8F6B6 = {
 			isa = PBXGroup;
 			children = (
+				C59980F4174FD4EB00B6A1A3 /* icon-144.png */,
+				C59980F2174FD4E500B6A1A3 /* icon-72.png */,
+				C59980F0174FD4DE00B6A1A3 /* icon-114.png */,
+				C59980EE174FD4D100B6A1A3 /* icon.png */,
+				C564851F16E4F0C1003AE60B /* Default-568h@2x.png */,
 				C51A588F14F0295E00E8F6B6 /* iCar */,
 				C51A588814F0295E00E8F6B6 /* Frameworks */,
 				C51A588614F0295E00E8F6B6 /* Products */,
@@ -154,6 +169,11 @@
 				C51A589414F0295E00E8F6B6 /* InfoPlist.strings in Resources */,
 				C51A589D14F0295E00E8F6B6 /* MainStoryboard_iPhone.storyboard in Resources */,
 				C51A58A014F0295E00E8F6B6 /* MainStoryboard_iPad.storyboard in Resources */,
+				C564852016E4F0C1003AE60B /* Default-568h@2x.png in Resources */,
+				C59980EF174FD4D100B6A1A3 /* icon.png in Resources */,
+				C59980F1174FD4DE00B6A1A3 /* icon-114.png in Resources */,
+				C59980F3174FD4E500B6A1A3 /* icon-72.png in Resources */,
+				C59980F5174FD4EB00B6A1A3 /* icon-144.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +239,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -237,7 +257,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -251,6 +271,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCar/iCar-Prefix.pch";
 				INFOPLIST_FILE = "iCar/iCar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -262,6 +283,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCar/iCar-Prefix.pch";
 				INFOPLIST_FILE = "iCar/iCar-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -286,6 +308,7 @@
 				C51A58A814F0295F00E8F6B6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
