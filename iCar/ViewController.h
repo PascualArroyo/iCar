@@ -74,12 +74,15 @@
     BOOL PHOTO;
     
     
+    NSTimer * loop;
+    
     NSMutableData* buffer;
     
     NSInteger bytesRead;
     NSInteger totalBytesRead;
     
     uint32_t max_size;
+
     
 
 }

@@ -69,7 +69,7 @@
         [self.view addSubview:marcoCamara];
         [[marcoCamara layer] setCornerRadius:2.0f];
         [[marcoCamara layer] setBorderWidth:1.0f];
-        [marcoCamara release];
+        //[marcoCamara release];
         
         mandoCamara = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
         mandoCamara.backgroundColor = [UIColor blackColor];
@@ -304,10 +304,6 @@
     
     PHOTO = NO;
     
-    [[UIAccelerometer sharedAccelerometer] setUpdateInterval:(1.0/10.0)];
-    [[UIAccelerometer sharedAccelerometer] setDelegate:self];
-    
-    
     motor1 = 0;
     motor2 = 0;
     
@@ -376,6 +372,9 @@
         [inputStream open];
         [outputStream open];
         
+        
+        
+        loop = [NSTimer scheduledTimerWithTimeInterval: 0.05 target:self selector:@selector (funcion) userInfo:nil repeats:YES];
     }
     
 	[self modo2];
@@ -401,12 +400,14 @@
         outputStream = nil; 
         inputStream = nil;
         
+        [loop invalidate];
+        
     }
     
     [self modo1];
 }
 
--(void)accelerometer:(UIAccelerometer*)accelerometer didAccelerate:(UIAcceleration *)acceleration
+-(void)funcion
 {
     
     NSString *response;
@@ -498,215 +499,201 @@
             
             if (theStream == inputStream) {
                 
+                int len;
                 
-                if (PHOTO) {
+                buffer = [[NSMutableData alloc] initWithLength: 64];
+                
+                bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: 64];
+                
+                if (bytesRead) {
                     
-                    NSLog(@"probando");
+                    NSString * response= [[NSString alloc] initWithData:buffer encoding:NSASCIIStringEncoding];
+                    const char * cadena = [response cStringUsingEncoding:NSASCIIStringEncoding];
                     
-                    if (totalBytesRead < max_size)
+                    [buffer release];
+                    
+                    //info.text = response;
+                    
+                    NSLog(response);
+                    
+                    
+                    char tmp[10];
+                    
+                    sscanf(cadena, "%s", tmp);
+                    
+                    if(strcmp(tmp,"PHOTO") == 0)
                     {
-                        bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: max_size -totalBytesRead];
-                        totalBytesRead += bytesRead;
-                    
-                        if (bytesRead < 1) {
-                            NSLog(@"Error");
+                        sscanf(cadena, "PHOTO -len %d", &len);
+                        
+                        max_size = len;
+                        
+                        buffer = [[NSMutableData alloc] initWithLength: max_size];
+                        
+                        totalBytesRead = 0;
+                        
+                        bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: max_size];
+                        
+                        if (bytesRead != 0) {
+                            
+                            while (bytesRead > 0 && totalBytesRead + bytesRead < max_size) {
+                                
+                                totalBytesRead += bytesRead;
+                                
+                                bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] + totalBytesRead maxLength: max_size - totalBytesRead];
+                                
+                                NSLog(@"%d",totalBytesRead);
+                            }
+                            
+                            
+                            if (bytesRead >= 0) {
+                                totalBytesRead += bytesRead;
+                            }
+                            else {
+                                NSLog(@"Error");
+                                // read failure, report error and bail (not forgetting to release buffer)
+                            }
+                            
+                            [buffer setLength: totalBytesRead];
+                            marcoCamara.image = [UIImage imageWithData: buffer];
+                            [buffer release];
                         }
                         
-                        NSLog(@"%d",totalBytesRead);
                     }
                     
-                    if (totalBytesRead >= max_size)
+                    else if(strcmp(tmp,"TELE") == 0)
                     {
+                        float temp1;
+                        float temp2;
+                        int luz;
+                        int obstaculo;
+                        sscanf(cadena, "TELE -s1 %f -s2 %f -s3 %d -s4 %d", &temp1, &temp2, &luz, &obstaculo);
                         
-                        [buffer setLength: totalBytesRead];
-                        marcoCamara.image = [UIImage imageWithData: buffer];
-                        [buffer release];
+                        temp1 = temp1/10.0;
+                        temp2 = temp2/10.0;
                         
+                        sen1.text = [NSString stringWithFormat:@"Temp Sensor 1 %.1f Cº",temp1];
+                        sen2.text = [NSString stringWithFormat:@"Temp Sensor 2 %.1f Cº",temp2];
+                        sen3.text = [NSString stringWithFormat:@"Light Level %d", luz];
                         
-                        NSLog(@"imagen leida %d bytes", totalBytesRead);
-                        
-                        PHOTO = FALSE;
-                    }
-                    
-                    
-                }
-                else
-                {
-                    int len;
-                    
-                    buffer = [[NSMutableData alloc] initWithLength: 64];
-                    
-                    bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: 64];
-                    
-                    if (bytesRead) {
-                        
-                        NSString * response= [[NSString alloc] initWithData:buffer encoding:NSASCIIStringEncoding];
-                        const char * cadena = [response cStringUsingEncoding:NSASCIIStringEncoding];
-                        
-                        [buffer release];
-                        
-                        //info.text = response;
-                        
-                        NSLog(response);
-                        
-                        
-                        char tmp[10];
-                        
-                        sscanf(cadena, "%s", tmp);
-                        
-                        if(strcmp(tmp,"PHOTO") == 0)
+                        if (obstaculo > 100) {
+                            sen4.text = [NSString stringWithFormat:@"Detected obstacle NO"];
+                        }
+                        else
                         {
-                            sscanf(cadena, "PHOTO -len %d", &len);
-                            
-                            max_size = 4200;  // Max size of the received imaged.
-                            
-                            max_size = len;
-                            
-                            buffer = [[NSMutableData alloc] initWithLength: max_size];
-                            
-                            totalBytesRead = 0;
-                            
-                            PHOTO = YES;
+                            sen4.text = [NSString stringWithFormat:@"Detected obstacle YES"];
                         }
                         
-                        else if(strcmp(tmp,"TELE") == 0)
+                        if (temp1 < 20) {
+                            sen1Ind.backgroundColor = [UIColor blueColor];
+                        }
+                        else if (temp1 < 30)
                         {
-                            float temp1;
-                            float temp2;
-                            int luz;
-                            int obstaculo;
-                            sscanf(cadena, "TELE -s1 %f -s2 %f -s3 %d -s4 %d", &temp1, &temp2, &luz, &obstaculo);
-                            
-                            temp1 = temp1/10.0;
-                            temp2 = temp2/10.0;
-                            
-                            sen1.text = [NSString stringWithFormat:@"Temp Sensor 1 %.1f Cº",temp1];
-                            sen2.text = [NSString stringWithFormat:@"Temp Sensor 2 %.1f Cº",temp2];
-                            sen3.text = [NSString stringWithFormat:@"Light Level %d", luz];
-                            
-                            if (obstaculo > 100) {
-                                sen4.text = [NSString stringWithFormat:@"Detected obstacle NO"];
-                            }
-                            else
-                            {
-                                sen4.text = [NSString stringWithFormat:@"Detected obstacle YES"];
-                            }
-                            
-                            if (temp1 < 20) {
-                                sen1Ind.backgroundColor = [UIColor blueColor];
-                            }
-                            else if (temp1 < 30)
-                            {
-                                sen1Ind.backgroundColor = [UIColor greenColor];
-                                
-                            }
-                            else if (temp1 < 40)
-                            {
-                                sen1Ind.backgroundColor = [UIColor redColor];
-                            }
-                            else
-                            {
-                                sen1Ind.backgroundColor = [UIColor purpleColor];
-                            }
-                            
-                            if (temp2 < 20) {
-                                sen2Ind.backgroundColor = [UIColor blueColor];
-                            }
-                            else if (temp2 < 30)
-                            {
-                                sen2Ind.backgroundColor = [UIColor greenColor];
-                                
-                            }
-                            else if (temp2 < 40)
-                            {
-                                sen2Ind.backgroundColor = [UIColor redColor];
-                            }
-                            else
-                            {
-                                sen2Ind.backgroundColor = [UIColor purpleColor];
-                            }
-                            
-                            
-                            
-                            
-                            
-                            if (luz < 50) {
-                                sen3Ind.backgroundColor = [UIColor blackColor];
-                            }
-                            else if (luz < 100)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
-                                
-                            }
-                            else if (luz < 150)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
-                                
-                            }
-                            else if (luz < 200)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1.0];
-                                
-                            }
-                            else if (luz < 250)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1.0];
-                                
-                            }
-                            else if (luz < 300)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
-                                
-                            }
-                            else if (luz < 350)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-                                
-                            }
-                            else if (luz < 400)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0];
-                                
-                            }
-                            else if (luz < 450)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-                                
-                            }
-                            else if (luz < 500)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-                                
-                            }
-                            else if (luz < 550)
-                            {
-                                sen3Ind.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-                                
-                            }
-                            else
-                            {
-                                sen3Ind.backgroundColor = [UIColor whiteColor];
-                            }
-                            
-                            //info.text = [NSString stringWithFormat:@"Temp1 %.1f, Temp2 %.1f, Luz %d, Obstaculo %d", temp1, temp2, luz, obstaculo];
-                            
+                            sen1Ind.backgroundColor = [UIColor greenColor];
                             
                         }
+                        else if (temp1 < 40)
+                        {
+                            sen1Ind.backgroundColor = [UIColor redColor];
+                        }
+                        else
+                        {
+                            sen1Ind.backgroundColor = [UIColor purpleColor];
+                        }
+                        
+                        if (temp2 < 20) {
+                            sen2Ind.backgroundColor = [UIColor blueColor];
+                        }
+                        else if (temp2 < 30)
+                        {
+                            sen2Ind.backgroundColor = [UIColor greenColor];
+                            
+                        }
+                        else if (temp2 < 40)
+                        {
+                            sen2Ind.backgroundColor = [UIColor redColor];
+                        }
+                        else
+                        {
+                            sen2Ind.backgroundColor = [UIColor purpleColor];
+                        }
+                        
+                        
+                        
+                        
+                        
+                        if (luz < 50) {
+                            sen3Ind.backgroundColor = [UIColor blackColor];
+                        }
+                        else if (luz < 100)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
+                            
+                        }
+                        else if (luz < 150)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
+                            
+                        }
+                        else if (luz < 200)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1.0];
+                            
+                        }
+                        else if (luz < 250)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1.0];
+                            
+                        }
+                        else if (luz < 300)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
+                            
+                        }
+                        else if (luz < 350)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
+                            
+                        }
+                        else if (luz < 400)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0];
+                            
+                        }
+                        else if (luz < 450)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
+                            
+                        }
+                        else if (luz < 500)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
+                            
+                        }
+                        else if (luz < 550)
+                        {
+                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
+                            
+                        }
+                        else
+                        {
+                            sen3Ind.backgroundColor = [UIColor whiteColor];
+                        }
+                        
+                        //info.text = [NSString stringWithFormat:@"Temp1 %.1f, Temp2 %.1f, Luz %d, Obstaculo %d", temp1, temp2, luz, obstaculo];
+                        
+                        
                     }
-
                 }
                 
-                                
             }
-                 
-                
+            
+            
 			break;
             
         case NSStreamEventErrorOccurred:
 			
 			NSLog(@"Can not connect to the host!");
             [self deleteNetworkCommunication];
-            [self initNetworkCommunication];
             
 			break;
 			
@@ -717,6 +704,8 @@
             [theStream removeFromRunLoop:[NSRunLoop currentRunLoop] forMode:NSDefaultRunLoopMode];
             [theStream release];
             theStream = nil;
+            
+            [loop invalidate];
 			
 			break;
             
