@@ -11,7 +11,6 @@
 @implementation ViewController
 @synthesize outputStream;
 @synthesize inputStream;
-@synthesize info;
 @synthesize marco1;
 @synthesize marco2;
 @synthesize mando1;
@@ -22,32 +21,17 @@
 @synthesize marcoCamara;
 @synthesize mandoCamara;
 
-@synthesize botonAUTO;
 @synthesize botonBeep;
 @synthesize botonConnect;
 @synthesize botonDisconnect;
 @synthesize botonLights;
-@synthesize botonOFF;
-@synthesize botonON;
-@synthesize botonTelemetry;
-@synthesize botonBack;
-@synthesize botonRefresh;
-@synthesize botonPowerOFF;
-@synthesize botonPowerON;
 @synthesize botonPower;
 @synthesize ip;
 
-@synthesize sen1;
-@synthesize sen2;
-@synthesize sen3;
-@synthesize sen4;
-
-@synthesize sen1Ind;
-@synthesize sen2Ind;
-@synthesize sen3Ind;
-
-
 @synthesize buffer;
+
+@synthesize resolution;
+
 
 - (void)didReceiveMemoryWarning
 {
@@ -69,7 +53,7 @@
         [self.view addSubview:marcoCamara];
         [[marcoCamara layer] setCornerRadius:2.0f];
         [[marcoCamara layer] setBorderWidth:1.0f];
-        //[marcoCamara release];
+        [marcoCamara release];
         
         mandoCamara = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 15, 15)];
         mandoCamara.backgroundColor = [UIColor blackColor];
@@ -126,60 +110,7 @@
         [[mando2 layer] setBorderWidth:1.0f];
         mando2.center = CGPointMake(marco2.center.x, marco2.center.y);
         [mando2 release];
-        
-        sen1 = [[UILabel alloc] initWithFrame:CGRectMake(250, 230, 450, 50) ];
-        sen1.backgroundColor = [UIColor clearColor];
-        sen1.font = [UIFont fontWithName:@"American TypeWriter" size:(37.0)];
-        sen1.textColor = [UIColor blackColor];
-        sen1.text = [NSString stringWithFormat:@"Temp Sensor 1 23.5 Cº"];
-        [self.view addSubview:sen1];
-        [sen1 release];
-        
-        sen2 = [[UILabel alloc] initWithFrame:CGRectMake(250, 300, 450, 60) ];
-        sen2.backgroundColor = [UIColor clearColor];
-        sen2.font = [UIFont fontWithName:@"American TypeWriter" size:(37.0)];
-        sen2.textColor = [UIColor blackColor];
-        sen2.text = [NSString stringWithFormat:@"Temp Sensor 2 23.5 Cº"];
-        [self.view addSubview:sen2];
-        [sen2 release];
-        
-        sen3 = [[UILabel alloc] initWithFrame:CGRectMake(250, 370, 450, 50) ];
-        sen3.backgroundColor = [UIColor clearColor];
-        sen3.font = [UIFont fontWithName:@"American TypeWriter" size:(37.0)];
-        sen3.textColor = [UIColor blackColor];
-        sen3.text = [NSString stringWithFormat:@"Light Level 300"];
-        [self.view addSubview:sen3];
-        [sen3 release];
-        
-        sen4 = [[UILabel alloc] initWithFrame:CGRectMake(250, 440, 450, 50) ];
-        sen4.backgroundColor = [UIColor clearColor];
-        sen4.font = [UIFont fontWithName:@"American TypeWriter" size:(37.0)];
-        sen4.textColor = [UIColor blackColor];
-        sen4.text = [NSString stringWithFormat:@"Detected obstacle YES"];
-        [self.view addSubview:sen4];
-        [sen4 release];
-        
-        sen1Ind = [[UIView alloc] initWithFrame:CGRectMake(730, 240, 50, 50) ];
-        sen1Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen1Ind];
-        [[sen1Ind layer] setCornerRadius:6.0f];
-        [[sen1Ind layer] setBorderWidth:2.0f];
-        [sen1Ind release];
-        
-        sen2Ind = [[UIView alloc] initWithFrame:CGRectMake(730, 310, 50, 50) ];
-        sen2Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen2Ind];
-        [[sen2Ind layer] setCornerRadius:6.0f];
-        [[sen2Ind layer] setBorderWidth:2.0f];
-        [sen2Ind release];
-        
-        sen3Ind = [[UIView alloc] initWithFrame:CGRectMake(730, 380, 50, 50) ];
-        sen3Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen3Ind];
-        [[sen3Ind layer] setCornerRadius:6.0f];
-        [[sen3Ind layer] setBorderWidth:2.0f];
-        [sen3Ind release];
-
+     
     }
     
     else
@@ -243,66 +174,14 @@
         mando2.center = CGPointMake(marco2.center.x, marco2.center.y);
         [mando2 release];
         
-        sen1 = [[UILabel alloc] initWithFrame:CGRectMake(90, 70, 400, 50) ];
-        sen1.backgroundColor = [UIColor clearColor];
-        sen1.font = [UIFont fontWithName:@"American TypeWriter" size:(30.0)];
-        sen1.textColor = [UIColor blackColor];
-        sen1.text = [NSString stringWithFormat:@"Temp Sensor 1 23.5 Cº"];
-        [self.view addSubview:sen1];
-        [sen1 release];
-        
-        sen2 = [[UILabel alloc] initWithFrame:CGRectMake(90, 120, 400, 50) ];
-        sen2.backgroundColor = [UIColor clearColor];
-        sen2.font = [UIFont fontWithName:@"American TypeWriter" size:(30.0)];
-        sen2.textColor = [UIColor blackColor];
-        sen2.text = [NSString stringWithFormat:@"Temp Sensor 2 23.5 Cº"];
-        [self.view addSubview:sen2];
-        [sen2 release];
-        
-        sen3 = [[UILabel alloc] initWithFrame:CGRectMake(90, 170, 400, 50) ];
-        sen3.backgroundColor = [UIColor clearColor];
-        sen3.font = [UIFont fontWithName:@"American TypeWriter" size:(30.0)];
-        sen3.textColor = [UIColor blackColor];
-        sen3.text = [NSString stringWithFormat:@"Light Level 300"];
-        [self.view addSubview:sen3];
-        [sen3 release];
-        
-        sen4 = [[UILabel alloc] initWithFrame:CGRectMake(90, 220, 400, 50) ];
-        sen4.backgroundColor = [UIColor clearColor];
-        sen4.font = [UIFont fontWithName:@"American TypeWriter" size:(30.0)];
-        sen4.textColor = [UIColor blackColor];
-        sen4.text = [NSString stringWithFormat:@"Detected obstacle YES"];
-        [self.view addSubview:sen4];
-        [sen4 release];
-        
-        sen1Ind = [[UIView alloc] initWithFrame:CGRectMake(450, 75, 40, 40) ];
-        sen1Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen1Ind];
-        [[sen1Ind layer] setCornerRadius:6.0f];
-        [[sen1Ind layer] setBorderWidth:2.0f];
-        [sen1Ind release];
-        
-        sen2Ind = [[UIView alloc] initWithFrame:CGRectMake(450, 125, 40, 40) ];
-        sen2Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen2Ind];
-        [[sen2Ind layer] setCornerRadius:6.0f];
-        [[sen2Ind layer] setBorderWidth:2.0f];
-        [sen2Ind release];
-        
-        sen3Ind = [[UIView alloc] initWithFrame:CGRectMake(450, 175, 40, 40) ];
-        sen3Ind.backgroundColor = [UIColor blueColor];
-        [self.view addSubview:sen3Ind];
-        [[sen3Ind layer] setCornerRadius:6.0f];
-        [[sen3Ind layer] setBorderWidth:2.0f];
-        [sen3Ind release];
-
-        
     }
         
-    
     [self.view setMultipleTouchEnabled:YES];
     
-    PHOTO = NO;
+    intResolution = 0;
+    
+    power = NO;
+    light = NO;
     
     motor1 = 0;
     motor2 = 0;
@@ -487,7 +366,6 @@
 
 - (void)stream:(NSStream *)theStream handleEvent:(NSStreamEvent)streamEvent {
     
-	//NSLog(@"stream event %i", streamEvent);
 	switch (streamEvent) {
             
         case NSStreamEventOpenCompleted:
@@ -512,12 +390,11 @@
                     
                     [buffer release];
                     
-                    //info.text = response;
+                    if (cadena != NULL) {
                     
-                    NSLog(response);
+                    char tmp[65];
                     
-                    
-                    char tmp[10];
+                    NSLog(@"Cadena -> %s",cadena);
                     
                     sscanf(cadena, "%s", tmp);
                     
@@ -525,38 +402,52 @@
                     {
                         sscanf(cadena, "PHOTO -len %d", &len);
                         
-                        max_size = len;
-                        
-                        buffer = [[NSMutableData alloc] initWithLength: max_size];
-                        
-                        totalBytesRead = 0;
-                        
-                        bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: max_size];
-                        
-                        if (bytesRead != 0) {
+                        if (len > 0) {
                             
-                            while (bytesRead > 0 && totalBytesRead + bytesRead < max_size) {
+                            max_size = len;
+                            
+                            buffer = [[NSMutableData alloc] initWithLength: max_size];
+                            
+                            totalBytesRead = 0;
+                            
+                            bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] maxLength: max_size];
+                            
+                            if (bytesRead != 0) {
                                 
-                                totalBytesRead += bytesRead;
+                                while (bytesRead > 0 && totalBytesRead + bytesRead < max_size) {
+                                    
+                                    totalBytesRead += bytesRead;
+                                    
+                                    bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] + totalBytesRead maxLength: max_size - totalBytesRead];
+                                    
+                                    NSLog(@"%d",totalBytesRead);
+                                }
                                 
-                                bytesRead = [(NSInputStream *)theStream read: [buffer mutableBytes] + totalBytesRead maxLength: max_size - totalBytesRead];
                                 
-                                NSLog(@"%d",totalBytesRead);
+                                if (bytesRead >= 0) {
+                                    totalBytesRead += bytesRead;
+                                }
+                                else {
+                                    NSLog(@"\n\n**************** Error ****************\n\n");
+                                    
+                                }
+                                
+                                [buffer setLength: totalBytesRead];
+                                
+                                marcoCamara.image = [UIImage imageWithData: buffer];
+                                
+                                [buffer release];
+                                
                             }
                             
-                            
-                            if (bytesRead >= 0) {
-                                totalBytesRead += bytesRead;
-                            }
-                            else {
-                                NSLog(@"Error");
-                                // read failure, report error and bail (not forgetting to release buffer)
-                            }
-                            
-                            [buffer setLength: totalBytesRead];
-                            marcoCamara.image = [UIImage imageWithData: buffer];
-                            [buffer release];
                         }
+                        
+                        else
+                        {
+                             NSLog(@"\n\n**************** Len Negative ****************\n\n");
+                        }
+                        
+                        
                         
                     }
                     
@@ -568,119 +459,14 @@
                         int obstaculo;
                         sscanf(cadena, "TELE -s1 %f -s2 %f -s3 %d -s4 %d", &temp1, &temp2, &luz, &obstaculo);
                         
-                        temp1 = temp1/10.0;
-                        temp2 = temp2/10.0;
+                         
+                    }
                         
-                        sen1.text = [NSString stringWithFormat:@"Temp Sensor 1 %.1f Cº",temp1];
-                        sen2.text = [NSString stringWithFormat:@"Temp Sensor 2 %.1f Cº",temp2];
-                        sen3.text = [NSString stringWithFormat:@"Light Level %d", luz];
-                        
-                        if (obstaculo > 100) {
-                            sen4.text = [NSString stringWithFormat:@"Detected obstacle NO"];
-                        }
-                        else
-                        {
-                            sen4.text = [NSString stringWithFormat:@"Detected obstacle YES"];
-                        }
-                        
-                        if (temp1 < 20) {
-                            sen1Ind.backgroundColor = [UIColor blueColor];
-                        }
-                        else if (temp1 < 30)
-                        {
-                            sen1Ind.backgroundColor = [UIColor greenColor];
-                            
-                        }
-                        else if (temp1 < 40)
-                        {
-                            sen1Ind.backgroundColor = [UIColor redColor];
-                        }
-                        else
-                        {
-                            sen1Ind.backgroundColor = [UIColor purpleColor];
-                        }
-                        
-                        if (temp2 < 20) {
-                            sen2Ind.backgroundColor = [UIColor blueColor];
-                        }
-                        else if (temp2 < 30)
-                        {
-                            sen2Ind.backgroundColor = [UIColor greenColor];
-                            
-                        }
-                        else if (temp2 < 40)
-                        {
-                            sen2Ind.backgroundColor = [UIColor redColor];
-                        }
-                        else
-                        {
-                            sen2Ind.backgroundColor = [UIColor purpleColor];
-                        }
-                        
-                        
-                        
-                        
-                        
-                        if (luz < 50) {
-                            sen3Ind.backgroundColor = [UIColor blackColor];
-                        }
-                        else if (luz < 100)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.1 alpha:1.0];
-                            
-                        }
-                        else if (luz < 150)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.2 alpha:1.0];
-                            
-                        }
-                        else if (luz < 200)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.3 alpha:1.0];
-                            
-                        }
-                        else if (luz < 250)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.4 alpha:1.0];
-                            
-                        }
-                        else if (luz < 300)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.5 alpha:1.0];
-                            
-                        }
-                        else if (luz < 350)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.6 alpha:1.0];
-                            
-                        }
-                        else if (luz < 400)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.7 alpha:1.0];
-                            
-                        }
-                        else if (luz < 450)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.8 alpha:1.0];
-                            
-                        }
-                        else if (luz < 500)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.9 alpha:1.0];
-                            
-                        }
-                        else if (luz < 550)
-                        {
-                            sen3Ind.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1.0];
-                            
-                        }
-                        else
-                        {
-                            sen3Ind.backgroundColor = [UIColor whiteColor];
-                        }
-                        
-                        //info.text = [NSString stringWithFormat:@"Temp1 %.1f, Temp2 %.1f, Luz %d, Obstaculo %d", temp1, temp2, luz, obstaculo];
-                        
+                    }
+                    
+                    else
+                    {
+                        NSLog(@"\n\n**************** Cadena NULL ****************\n\n"); 
                         
                     }
                 }
@@ -711,8 +497,7 @@
             
 		default:
 			NSLog(@"Unknown event");
-
-            
+     
             
     }
     
@@ -730,88 +515,51 @@
 }
 
 - (IBAction) luces:(id)sender{
-    [self modo3];
-    
-}
-
-
-
-- (IBAction) lucesON:(id)sender{
     
     if ([outputStream streamStatus]) {
-        dato = 15;
+        
+        if (light) {
+             dato = 16;
+            light = NO;
+        }
+        else
+        {
+            dato = 15;
+            light = YES;
+        }
         
         NSString *response  = [NSString stringWithFormat:@"%c", dato];
         NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
         [outputStream write:[data bytes] maxLength:[data length]];
     }
     
-    [self modo2];
-    
-    
 }
 
-- (IBAction) lucesOFF:(id)sender{
-    
-    if ([outputStream streamStatus]) {
-        dato = 16;
-        
-        NSString *response  = [NSString stringWithFormat:@"%c", dato];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-        [outputStream write:[data bytes] maxLength:[data length]];
-    }
-    
-    [self modo2];
-    
-    
-}
-
-- (IBAction) lucesAUTO:(id)sender{
-    
-    if ([outputStream streamStatus]) {
-        dato = 17;
-        
-        NSString *response  = [NSString stringWithFormat:@"%c", dato];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-        [outputStream write:[data bytes] maxLength:[data length]];
-    }
-    
-    [self modo2];
-    
-    
-}
 
 - (IBAction) power:(id)sender{
-    [self modo5];
-}
-
-- (IBAction) powerON:(id)sender{
-    
     if ([outputStream streamStatus]) {
-        dato = 18;
+        
+        if (power) {
+            
+            dato = 19;
+            power = NO;
+            botonPower.titleLabel.text = @"Power YES";
+        }
+        else
+        {
+            dato = 18;
+            power = YES;
+            
+            botonPower.titleLabel.text = @"Power NO";
+        }
         
         NSString *response  = [NSString stringWithFormat:@"%c", dato];
         NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
         [outputStream write:[data bytes] maxLength:[data length]];
     }
-    [self modo2];
-    
 }
 
-- (IBAction) powerOFF:(id)sender{
-    
-    if ([outputStream streamStatus]) {
-        dato = 19;
-        
-        NSString *response  = [NSString stringWithFormat:@"%c", dato];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-        [outputStream write:[data bytes] maxLength:[data length]];
-    }
-    
-    [self modo2];
-    
-    
-}
+
 - (IBAction) pito:(id)sender{
     
     if ([outputStream streamStatus]) {
@@ -836,34 +584,6 @@
     
 }
 
-- (IBAction) telemetria:(id)sender{
-    
-    if ([outputStream streamStatus]) {
-        dato = 30;
-        
-        NSString *response  = [NSString stringWithFormat:@"%c", dato];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-        [outputStream write:[data bytes] maxLength:[data length]];
-    }
-    
-    [self modo4];
-    
-    
-}
-
-- (IBAction) refresh:(id)sender{
-    
-    if ([outputStream streamStatus]) {
-        dato = 30;
-        
-        NSString *response  = [NSString stringWithFormat:@"%c", dato];
-        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
-        [outputStream write:[data bytes] maxLength:[data length]];
-    }
-    
-    
-}
-
 
 - (IBAction) camara:(id)sender{
     
@@ -871,7 +591,9 @@
         
         NSLog(@"Take a Photo");
         
-        NSString *response  = [NSString stringWithFormat:@"%c", 65];
+        dato = 65;
+        
+        NSString *response  = [NSString stringWithFormat:@"%c", dato];
         NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
         [outputStream write:[data bytes] maxLength:[data length]];
     }
@@ -882,11 +604,6 @@
     
 }
 
-- (IBAction) goBack:(id)sender{
-    
-    [self modo2];
-    
-}
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
     
@@ -1042,10 +759,7 @@
         }
         
     }
-    
-	
-  
-    
+      
     if (dir1 == dir2)
     {
         if(dir1==1)
@@ -1068,8 +782,39 @@
             dir = 4;
         }
     }
-    
+}
 
+- (IBAction) pick:(id)sender{
+    
+    
+    if ([outputStream streamStatus]) {
+        
+        if(resolution.selectedSegmentIndex == 0)
+        {
+            dato = 40;
+            botonCamara.hidden = YES;
+        }
+        
+        else if(resolution.selectedSegmentIndex == 1)
+        {
+            dato = 41;
+            botonCamara.hidden = YES;
+        }
+        
+        else if(resolution.selectedSegmentIndex == 2)
+        {
+            dato = 42;
+            
+            botonCamara.hidden = NO;
+        }
+        
+        NSLog(@"Pick -> %d",dato);
+        
+        NSString *response  = [NSString stringWithFormat:@"%c", dato];
+        NSData *data = [[NSData alloc] initWithData:[response dataUsingEncoding:NSASCIIStringEncoding]];
+        [outputStream write:[data bytes] maxLength:[data length]];
+    }
+            
 }
 
 
@@ -1079,11 +824,7 @@
     ip.hidden = NO;
     
     botonDisconnect.hidden = YES;
-    botonTelemetry.hidden = YES;
-    botonON.hidden = YES;
-    botonOFF.hidden = YES;
     botonCamara.hidden = YES;
-    botonAUTO.hidden = YES;
     botonLights.hidden = YES;
     botonBeep.hidden = YES;
     
@@ -1096,21 +837,8 @@
     marco2.hidden = YES;
     marcoCamara.hidden = YES;
     
-    botonBack.hidden = YES;
-    botonRefresh.hidden = YES;
-    
-    sen1.hidden = YES;
-    sen2.hidden = YES;
-    sen3.hidden = YES;
-    sen4.hidden = YES;
-    
-    sen1Ind.hidden = YES;
-    sen2Ind.hidden = YES;
-    sen3Ind.hidden = YES;
-    
     botonPower.hidden = YES;
-    botonPowerON.hidden = YES;
-    botonPowerOFF.hidden = YES;
+    resolution.hidden = YES;
     
 }
 
@@ -1120,11 +848,6 @@
     ip.hidden = YES;
     
     botonDisconnect.hidden = NO;
-    botonTelemetry.hidden = NO;
-    botonON.hidden = YES;
-    botonOFF.hidden = YES;
-    botonCamara.hidden = NO;
-    botonAUTO.hidden = YES;
     botonLights.hidden = NO;
     botonBeep.hidden = NO;
     
@@ -1137,115 +860,9 @@
     marco2.hidden = NO;
     marcoCamara.hidden = NO;
     
-    botonBack.hidden = YES;
-    botonRefresh.hidden = YES;
-    
-    sen1.hidden = YES;
-    sen2.hidden = YES;
-    sen3.hidden = YES;
-    sen4.hidden = YES;
-    
-    sen1Ind.hidden = YES;
-    sen2Ind.hidden = YES;
-    sen3Ind.hidden = YES;
-    
     botonPower.hidden = NO;
-    botonPowerON.hidden = YES;
-    botonPowerOFF.hidden = YES;
+    resolution.hidden = NO;
 
-    
-}
-
-- (void) modo3{
-    
-    botonConnect.hidden = YES;
-    ip.hidden = YES;
-    
-    botonDisconnect.hidden = YES;
-    botonTelemetry.hidden = YES;
-    botonON.hidden = NO;
-    botonOFF.hidden = NO;
-    botonCamara.hidden = YES;
-    botonAUTO.hidden = NO;
-    botonLights.hidden = YES;
-    botonBeep.hidden = YES;
-    
-    
-    mando1.hidden = YES;
-    mando2.hidden = YES;
-    mandoCamara.hidden = YES;
-    
-    marco1.hidden = YES;
-    marco2.hidden = YES;
-    marcoCamara.hidden = YES;
-    
-    botonBack.hidden = YES;
-    botonPower.hidden = YES;
-    
-}
-
-- (void) modo4{
-    
-    botonConnect.hidden = YES;
-    ip.hidden = YES;
-    
-    botonDisconnect.hidden = YES;
-    botonTelemetry.hidden = YES;
-    botonON.hidden = YES;
-    botonOFF.hidden = YES;
-    botonCamara.hidden = YES;
-    botonAUTO.hidden = YES;
-    botonLights.hidden = YES;
-    botonBeep.hidden = YES;
-    
-    
-    mando1.hidden = YES;
-    mando2.hidden = YES;
-    mandoCamara.hidden = YES;
-    
-    marco1.hidden = YES;
-    marco2.hidden = YES;
-    marcoCamara.hidden = YES;
-    
-    botonBack.hidden = NO;
-    botonRefresh.hidden = NO;
-    
-    sen1.hidden = NO;
-    sen2.hidden = NO;
-    sen3.hidden = NO;
-    sen4.hidden = NO;
-    
-    sen1Ind.hidden = NO;
-    sen2Ind.hidden = NO;
-    sen3Ind.hidden = NO;
-    botonPower.hidden = YES;
-    
-}
-
-- (void) modo5{
-    
-    botonConnect.hidden = YES;
-    ip.hidden = YES;
-    
-    botonDisconnect.hidden = YES;
-    botonTelemetry.hidden = YES;
-    botonCamara.hidden = YES;
-    botonLights.hidden = YES;
-    botonBeep.hidden = YES;
-    
-    
-    mando1.hidden = YES;
-    mando2.hidden = YES;
-    mandoCamara.hidden = YES;
-    
-    marco1.hidden = YES;
-    marco2.hidden = YES;
-    marcoCamara.hidden = YES;
-    
-    botonPower.hidden = YES;
-    botonPowerON.hidden = NO;
-    botonPowerOFF.hidden = NO;
-    
     
 }
 
